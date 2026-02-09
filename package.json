@@ -1,0 +1,68 @@
+{
+	"name": "@rbxts/jest-extended",
+	"version": "1.0.0",
+	"description": "Additional Jest matchers for roblox-ts projects.",
+	"keywords": ["roblox", "roblox-ts", "jest", "matchers", "testing"],
+	"license": "MIT",
+	"author": "Christopher Buss <christopher.buss@pm.me> (https://github.com/christopher-buss)",
+	"contributors": [
+		{
+			"name": "Matt Phillips",
+			"email": "matt@mattphillips.io",
+			"url": "https://mattphillips.io/"
+		}
+	],
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": "./out/index.luau",
+		"./package.json": "./package.json"
+	},
+	"main": "./out/index.luau",
+	"module": "./out/index.luau",
+	"types": "./out/index.d.ts",
+	"files": ["out"],
+	"scripts": {
+		"build": "rbxtsc --project tsconfig.lib.json",
+		"dev:build": "rbxtsc --type=game --rojo test.project.json",
+		"lint": "eslint --cache",
+		"lint:ci": "eslint --cache --cache-strategy content",
+		"prepack": "nr build",
+		"prepare": "simple-git-hooks",
+		"serve": "rojo serve test.project.json",
+		"test": "node ./scripts/run-tests.ts",
+		"typecheck": "tsc --noEmit",
+		"watch": "rbxtsc -w"
+	},
+	"simple-git-hooks": {
+		"pre-commit": "pnpm lint-staged"
+	},
+	"lint-staged": {
+		"*": "eslint --fix --cache --no-warn-ignored",
+		"*.ts": ["sh -c 'tsc --noEmit'"]
+	},
+	"devDependencies": {
+		"@isentinel/eslint-config": "catalog:lint",
+		"@isentinel/jest-roblox": "catalog:test",
+		"@isentinel/tsconfig": "catalog:tsc",
+		"@rbxts/compiler-types": "catalog:dev",
+		"@rbxts/jest": "catalog:test",
+		"@rbxts/jest-globals": "catalog:test",
+		"@rbxts/types": "catalog:dev",
+		"@types/node": "catalog:dev",
+		"bumpp": "catalog:cli",
+		"eslint": "catalog:lint",
+		"eslint-plugin-erasable-syntax-only": "catalog:lint",
+		"eslint-plugin-jest": "catalog:lint",
+		"jiti": "catalog:script",
+		"lint-staged": "catalog:lint",
+		"pncat": "catalog:dev",
+		"roblox-ts": "catalog:dev",
+		"simple-git-hooks": "catalog:lint",
+		"typescript": "catalog:tsc"
+	},
+	"packageManager": "pnpm@10.29.2+sha512.bef43fa759d91fd2da4b319a5a0d13ef7a45bb985a3d7342058470f9d2051a3ba8674e629672654686ef9443ad13a82da2beb9eeb3e0221c87b8154fff9d74b8",
+	"engines": {
+		"node": ">=v24.12.0"
+	}
+}

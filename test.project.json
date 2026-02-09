@@ -1,0 +1,48 @@
+{
+	"name": "jest-extended-test",
+	"globIgnorePaths": ["**/.package-lock.json", "**/tsconfig.json"],
+	"emitLegacyScripts": false,
+	"tree": {
+		"$className": "DataModel",
+		"HttpService": {
+			"$className": "HttpService",
+			"$properties": {
+				"HttpEnabled": true
+			}
+		},
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"jest-extended": {
+				"$path": "out"
+			},
+			"jest.config": {
+				"$path": "test/jest.config.luau"
+			},
+			"rbxts_include": {
+				"$path": "include",
+				"node_modules": {
+					"$className": "Folder",
+					"@rbxts": {
+						"$path": "node_modules/@rbxts"
+					},
+					"@rbxts-js": {
+						"$path": "node_modules/@rbxts-js"
+					}
+				}
+			}
+		},
+		"ServerScriptService": {
+			"$className": "ServerScriptService",
+			"$properties": {
+				"LoadStringEnabled": true
+			}
+		},
+		"TestService": {
+			"$className": "TestService",
+			"$path": "test",
+			"$properties": {
+				"ExecuteWithStudioRun": false
+			}
+		}
+	}
+}

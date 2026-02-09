@@ -1,0 +1,10 @@
+import type { Config } from "@isentinel/jest-roblox";
+
+export default {
+	backend: "studio",
+	compact: false,
+	placeFile: "test.rbxl",
+	projects: ["ReplicatedStorage"],
+	rojoProject: "test.project.json",
+	setupFiles: ["TestService/setup"],
+} satisfies Config;

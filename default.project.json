@@ -1,0 +1,6 @@
+{
+	"name": "jest-extended",
+	"tree": {
+		"$path": "dist"
+	}
+}

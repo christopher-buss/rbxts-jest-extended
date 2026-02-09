@@ -1,0 +1,5 @@
+{
+	"extends": "@isentinel/tsconfig/roblox",
+	"include": ["./src/**/*.ts"],
+	"exclude": ["./node_modules", "out", "dist"]
+}
