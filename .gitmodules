@@ -1,0 +1,3 @@
+[submodule "reference/jest-extended"]
+	path = reference/jest-extended
+	url = https://github.com/jest-community/jest-extended.git
