@@ -16,7 +16,7 @@ catalogs:
     pncat: ^0.9.1
     roblox-ts: ^3.0.0
   lint:
-    "@isentinel/eslint-config": ^4.7.9
+    "@isentinel/eslint-config": ^4.7.11
     eslint: ^9.39.2
     eslint-plugin-erasable-syntax-only: ^0.4.0
     eslint-plugin-jest: ^29.13.0
