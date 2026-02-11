@@ -6,6 +6,9 @@ publicHoistPattern:
 
 shellEmulator: true
 
+patchedDependencies:
+  "@rbxts/jest-globals": patches/@rbxts__jest-globals.patch
+
 catalogs:
   cli:
     bumpp: ^10.4.1

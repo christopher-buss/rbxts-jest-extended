@@ -25,14 +25,14 @@
 	"scripts": {
 		"build": "rbxtsc --project tsconfig.lib.json",
 		"dev:build": "rbxtsc --type=game --rojo test.project.json",
+		"dev:watch": "rbxtsc --type=game --rojo test.project.json --watch",
 		"lint": "eslint --cache",
 		"lint:ci": "eslint --cache --cache-strategy content",
 		"prepack": "nr build",
 		"prepare": "simple-git-hooks",
 		"serve": "rojo serve test.project.json",
 		"test": "node ./scripts/run-tests.ts",
-		"typecheck": "tsc --noEmit",
-		"watch": "rbxtsc -w"
+		"typecheck": "tsc --noEmit"
 	},
 	"simple-git-hooks": {
 		"pre-commit": "pnpm lint-staged"

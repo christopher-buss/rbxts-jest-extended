@@ -66,6 +66,11 @@ catalogs:
       specifier: ^5.9.3
       version: 5.9.3
 
+patchedDependencies:
+  '@rbxts/jest-globals':
+    hash: 7c7d4afef03a2cc6224721a3f25ff4dfe2c813ab91ea0430d7570739fc8ee431
+    path: patches/@rbxts__jest-globals.patch
+
 importers:
 
   .:
@@ -87,7 +92,7 @@ importers:
         version: 3.13.3-ts.1
       '@rbxts/jest-globals':
         specifier: catalog:test
-        version: 3.13.3-ts.1
+        version: 3.13.3-ts.1(patch_hash=7c7d4afef03a2cc6224721a3f25ff4dfe2c813ab91ea0430d7570739fc8ee431)
       '@rbxts/types':
         specifier: catalog:dev
         version: 1.0.906
@@ -4709,7 +4714,7 @@ snapshots:
     dependencies:
       '@rbxts-js/emittery': 3.13.3-ts.3
 
-  '@rbxts/jest-globals@3.13.3-ts.1':
+  '@rbxts/jest-globals@3.13.3-ts.1(patch_hash=7c7d4afef03a2cc6224721a3f25ff4dfe2c813ab91ea0430d7570739fc8ee431)':
     dependencies:
       '@rbxts-js/jest-globals': 3.13.3-ts.3
       '@rbxts/jest-matcher-utils': 3.13.3-ts.1
@@ -4724,7 +4729,7 @@ snapshots:
     dependencies:
       '@rbxts-js/jest': 3.13.3-ts.3
       '@rbxts/emittery': 3.13.3-ts.1
-      '@rbxts/jest-globals': 3.13.3-ts.1
+      '@rbxts/jest-globals': 3.13.3-ts.1(patch_hash=7c7d4afef03a2cc6224721a3f25ff4dfe2c813ab91ea0430d7570739fc8ee431)
       '@rbxts/pretty-format': 3.13.3-ts.1
 
   '@rbxts/pretty-format@3.13.3-ts.1':
