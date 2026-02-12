@@ -41,6 +41,10 @@
 		"*": "eslint --fix --cache --no-warn-ignored",
 		"*.ts": ["sh -c 'tsc --noEmit'"]
 	},
+	"dependencies": {
+		"@rbxts-js/jest-diff": "catalog:test",
+		"@rbxts/regexp": "catalog:prod"
+	},
 	"devDependencies": {
 		"@isentinel/eslint-config": "catalog:lint",
 		"@isentinel/jest-roblox": "catalog:test",

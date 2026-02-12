@@ -7,6 +7,7 @@ publicHoistPattern:
 shellEmulator: true
 
 patchedDependencies:
+  "@rbxts-js/expect": patches/@rbxts-js__expect.patch
   "@rbxts/jest-globals": patches/@rbxts__jest-globals.patch
 
 catalogs:
@@ -19,16 +20,19 @@ catalogs:
     pncat: ^0.9.1
     roblox-ts: ^3.0.0
   lint:
-    "@isentinel/eslint-config": ^4.7.11
+    "@isentinel/eslint-config": ^4.8.1
     eslint: ^9.39.2
     eslint-plugin-erasable-syntax-only: ^0.4.0
     eslint-plugin-jest: ^29.13.0
     lint-staged: ^16.2.7
     simple-git-hooks: ^2.13.1
+  prod:
+    "@rbxts/regexp": ^0.2.1-ts.4
   script:
     jiti: ^2.6.1
   test:
     "@isentinel/jest-roblox": ^0.0.1
+    "@rbxts-js/jest-diff": ^3.13.3-ts.3
     "@rbxts/jest": ^3.13.3-ts.1
     "@rbxts/jest-globals": ^3.13.3-ts.1
   tsc:

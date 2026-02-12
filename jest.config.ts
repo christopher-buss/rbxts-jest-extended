@@ -1,7 +1,7 @@
 import type { Config } from "@isentinel/jest-roblox";
 
 export default {
-	backend: "studio",
+	backend: "open-cloud",
 	compact: false,
 	placeFile: "test.rbxl",
 	projects: ["ReplicatedStorage"],

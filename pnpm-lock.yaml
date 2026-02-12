@@ -27,8 +27,8 @@ catalogs:
       version: 3.0.0
   lint:
     '@isentinel/eslint-config':
-      specifier: ^4.7.11
-      version: 4.7.11
+      specifier: ^4.8.1
+      version: 4.8.1
     eslint:
       specifier: ^9.39.2
       version: 9.39.2
@@ -44,6 +44,10 @@ catalogs:
     simple-git-hooks:
       specifier: ^2.13.1
       version: 2.13.1
+  prod:
+    '@rbxts/regexp':
+      specifier: ^0.2.1-ts.4
+      version: 0.2.1-ts.4
   script:
     jiti:
       specifier: ^2.6.1
@@ -52,6 +56,9 @@ catalogs:
     '@isentinel/jest-roblox':
       specifier: ^0.0.1
       version: 0.0.1
+    '@rbxts-js/jest-diff':
+      specifier: ^3.13.3-ts.3
+      version: 3.13.3-ts.3
     '@rbxts/jest':
       specifier: ^3.13.3-ts.1
       version: 3.13.3-ts.1
@@ -67,17 +74,27 @@ catalogs:
       version: 5.9.3
 
 patchedDependencies:
+  '@rbxts-js/expect':
+    hash: a8670469e31768fc08cd3ba1bfeac5f8e7f7cd04d86edcc5ee3140598e3dbc5c
+    path: patches/@rbxts-js__expect.patch
   '@rbxts/jest-globals':
-    hash: 7c7d4afef03a2cc6224721a3f25ff4dfe2c813ab91ea0430d7570739fc8ee431
+    hash: b0b766997536504f041b9ed201607d7bef3afae6ba3d6d070cde971ec2bcfd04
     path: patches/@rbxts__jest-globals.patch
 
 importers:
 
   .:
+    dependencies:
+      '@rbxts-js/jest-diff':
+        specifier: catalog:test
+        version: 3.13.3-ts.3
+      '@rbxts/regexp':
+        specifier: catalog:prod
+        version: 0.2.1-ts.4
     devDependencies:
       '@isentinel/eslint-config':
         specifier: catalog:lint
-        version: 4.7.11(@types/estree@1.0.8)(@typescript-eslint/utils@8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-jest@29.13.0(@typescript-eslint/eslint-plugin@8.49.0(@typescript-eslint/parser@8.49.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-n@17.23.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-react-naming-convention@2.12.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+        version: 4.8.1(@types/estree@1.0.8)(@typescript-eslint/utils@8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-jest@29.13.0(@typescript-eslint/eslint-plugin@8.49.0(@typescript-eslint/parser@8.49.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-n@17.23.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-react-naming-convention@2.12.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@isentinel/jest-roblox':
         specifier: catalog:test
         version: 0.0.1
@@ -92,7 +109,7 @@ importers:
         version: 3.13.3-ts.1
       '@rbxts/jest-globals':
         specifier: catalog:test
-        version: 3.13.3-ts.1(patch_hash=7c7d4afef03a2cc6224721a3f25ff4dfe2c813ab91ea0430d7570739fc8ee431)
+        version: 3.13.3-ts.1(patch_hash=b0b766997536504f041b9ed201607d7bef3afae6ba3d6d070cde971ec2bcfd04)
       '@rbxts/types':
         specifier: catalog:dev
         version: 1.0.906
@@ -531,8 +548,8 @@ packages:
   '@isentinel/dict-roblox@1.0.3':
     resolution: {integrity: sha512-XR1KVHZLyyamVobUICxTlDkB3gfLVuV34mdFQeIL7DfCtNI2uCeuZm6g6J63AQzUrqsCIUF166Ogf+TL0przdg==}
 
-  '@isentinel/eslint-config@4.7.11':
-    resolution: {integrity: sha512-kP1h7aK30IqhhFeVBMJPHj3l13jjCdaeNY2cduOPqm6AAGem9/bsclrLfL10edg3bvBg6mRPo4ayMHGzNRcnpg==}
+  '@isentinel/eslint-config@4.8.1':
+    resolution: {integrity: sha512-yhrBCSPKdQzM9cTkyVkmku2CAQ/ypXMYXj3W+LlBpi2p7MDCT2NL+9syez/yrvhXoLjCvsOB1ACuclzeAKTFug==}
     engines: {node: '>=22.16.0'}
     hasBin: true
     peerDependencies:
@@ -877,6 +894,9 @@ packages:
 
   '@rbxts/pretty-format@3.13.3-ts.1':
     resolution: {integrity: sha512-uTSxVdfQv/cD+kvttLzw/LfyNC35mxAsJrSqom+F94etDYlz7ZRvG75izSPfzG2oVRSrhv6roaeWPeTqkpcIug==}
+
+  '@rbxts/regexp@0.2.1-ts.4':
+    resolution: {integrity: sha512-UGHGq9xJ86ObpfY4bKkOeoBSQz6GpCwhfYteoxh5M15QFNS1MG8Ut9BPp8m3r8VOKftk94yY5X0hZ1bKYm439g==}
 
   '@rbxts/types@1.0.906':
     resolution: {integrity: sha512-WmuBYq/EqFXi687DnaKMQOpXorypR2Kq2JEsiWxz1OBKTg9Vvcy7w8y9UV5JPaJK+GgVp5rw0MjnxYffKHsldA==}
@@ -4165,7 +4185,7 @@ snapshots:
 
   '@isentinel/dict-roblox@1.0.3': {}
 
-  '@isentinel/eslint-config@4.7.11(@types/estree@1.0.8)(@typescript-eslint/utils@8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-jest@29.13.0(@typescript-eslint/eslint-plugin@8.49.0(@typescript-eslint/parser@8.49.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-n@17.23.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-react-naming-convention@2.12.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
+  '@isentinel/eslint-config@4.8.1(@types/estree@1.0.8)(@typescript-eslint/utils@8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-jest@29.13.0(@typescript-eslint/eslint-plugin@8.49.0(@typescript-eslint/parser@8.49.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-n@17.23.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-react-naming-convention@2.12.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@clack/prompts': 0.11.0
@@ -4370,7 +4390,7 @@ snapshots:
 
   '@rbxts-js/es7-types@1.2.3-ts.1': {}
 
-  '@rbxts-js/expect@3.13.3-ts.3':
+  '@rbxts-js/expect@3.13.3-ts.3(patch_hash=a8670469e31768fc08cd3ba1bfeac5f8e7f7cd04d86edcc5ee3140598e3dbc5c)':
     dependencies:
       '@rbxts-js/jest-get-type': 3.13.3-ts.3
       '@rbxts-js/jest-matcher-utils': 3.13.3-ts.3
@@ -4387,7 +4407,7 @@ snapshots:
   '@rbxts-js/jest-circus@3.13.3-ts.3':
     dependencies:
       '@rbxts-js/chalk-lua': 0.2.2-ts.2
-      '@rbxts-js/expect': 3.13.3-ts.3
+      '@rbxts-js/expect': 3.13.3-ts.3(patch_hash=a8670469e31768fc08cd3ba1bfeac5f8e7f7cd04d86edcc5ee3140598e3dbc5c)
       '@rbxts-js/jest-each': 3.13.3-ts.3
       '@rbxts-js/jest-environment': 3.13.3-ts.3
       '@rbxts-js/jest-matcher-utils': 3.13.3-ts.3
@@ -4497,7 +4517,7 @@ snapshots:
 
   '@rbxts-js/jest-globals@3.13.3-ts.3':
     dependencies:
-      '@rbxts-js/expect': 3.13.3-ts.3
+      '@rbxts-js/expect': 3.13.3-ts.3(patch_hash=a8670469e31768fc08cd3ba1bfeac5f8e7f7cd04d86edcc5ee3140598e3dbc5c)
       '@rbxts-js/jest-environment': 3.13.3-ts.3
       '@rbxts-js/jest-types': 3.13.3-ts.3
       '@rbxts-js/luau-polyfill': 1.2.3-ts.1
@@ -4570,7 +4590,7 @@ snapshots:
 
   '@rbxts-js/jest-runtime@3.13.3-ts.3':
     dependencies:
-      '@rbxts-js/expect': 3.13.3-ts.3
+      '@rbxts-js/expect': 3.13.3-ts.3(patch_hash=a8670469e31768fc08cd3ba1bfeac5f8e7f7cd04d86edcc5ee3140598e3dbc5c)
       '@rbxts-js/jest-fake-timers': 3.13.3-ts.3
       '@rbxts-js/jest-mock': 3.13.3-ts.3
       '@rbxts-js/jest-mock-genv': 3.13.3-ts.3
@@ -4714,7 +4734,7 @@ snapshots:
     dependencies:
       '@rbxts-js/emittery': 3.13.3-ts.3
 
-  '@rbxts/jest-globals@3.13.3-ts.1(patch_hash=7c7d4afef03a2cc6224721a3f25ff4dfe2c813ab91ea0430d7570739fc8ee431)':
+  '@rbxts/jest-globals@3.13.3-ts.1(patch_hash=b0b766997536504f041b9ed201607d7bef3afae6ba3d6d070cde971ec2bcfd04)':
     dependencies:
       '@rbxts-js/jest-globals': 3.13.3-ts.3
       '@rbxts/jest-matcher-utils': 3.13.3-ts.1
@@ -4729,12 +4749,14 @@ snapshots:
     dependencies:
       '@rbxts-js/jest': 3.13.3-ts.3
       '@rbxts/emittery': 3.13.3-ts.1
-      '@rbxts/jest-globals': 3.13.3-ts.1(patch_hash=7c7d4afef03a2cc6224721a3f25ff4dfe2c813ab91ea0430d7570739fc8ee431)
+      '@rbxts/jest-globals': 3.13.3-ts.1(patch_hash=b0b766997536504f041b9ed201607d7bef3afae6ba3d6d070cde971ec2bcfd04)
       '@rbxts/pretty-format': 3.13.3-ts.1
 
   '@rbxts/pretty-format@3.13.3-ts.1':
     dependencies:
       '@rbxts-js/pretty-format': 3.13.3-ts.3
+
+  '@rbxts/regexp@0.2.1-ts.4': {}
 
   '@rbxts/types@1.0.906': {}
 

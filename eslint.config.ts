@@ -8,9 +8,6 @@ export default isentinel({
 		files: ["src/**/*.ts", "src/**/*.tsx"],
 		filesTypeAware: ["src/**/*.ts", "src/**/*.tsx"],
 	},
-	rules: {
-		"pnpm/yaml-enforce-settings": "off",
-	},
 	test: true,
 	type: "package",
 	typescript: {
