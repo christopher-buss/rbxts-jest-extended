@@ -21,5 +21,22 @@
 		"ask": [],
 		"defaultMode": "plan",
 		"deny": []
+	},
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "Edit|Write|MultiEdit",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "node scripts/type-check.ts"
+					},
+					{
+						"type": "command",
+						"command": "node scripts/lint.ts"
+					}
+				]
+			}
+		]
 	}
 }

@@ -17,3 +17,4 @@ sourcemap.json
 .env
 
 .vscode/mise-tools/
+.claude/state

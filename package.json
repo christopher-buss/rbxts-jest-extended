@@ -32,14 +32,16 @@
 		"prepare": "simple-git-hooks",
 		"serve": "rojo serve test.project.json",
 		"test": "node ./scripts/run-tests.ts",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsgo --project tsconfig.json --noEmit && tsgo --project tsconfig.node.json --noEmit"
 	},
 	"simple-git-hooks": {
 		"pre-commit": "pnpm lint-staged"
 	},
 	"lint-staged": {
 		"*": "eslint --fix --cache --no-warn-ignored",
-		"*.ts": ["sh -c 'tsc --noEmit'"]
+		"*.ts": [
+			"sh -c 'tsgo --project tsconfig.json --noEmit && tsgo --project tsconfig.node.json --noEmit'"
+		]
 	},
 	"dependencies": {
 		"@rbxts-js/jest-diff": "catalog:test",
@@ -54,12 +56,17 @@
 		"@rbxts/jest-globals": "catalog:test",
 		"@rbxts/types": "catalog:dev",
 		"@types/node": "catalog:dev",
+		"@typescript/native-preview": "catalog:tsc",
 		"bumpp": "catalog:cli",
 		"eslint": "catalog:lint",
 		"eslint-plugin-erasable-syntax-only": "catalog:lint",
 		"eslint-plugin-jest": "catalog:lint",
+		"eslint_d": "catalog:lint",
+		"file-entry-cache": "catalog:dev",
+		"get-tsconfig": "catalog:tsc",
 		"jiti": "catalog:script",
 		"lint-staged": "catalog:lint",
+		"madge": "catalog:dev",
 		"pncat": "catalog:dev",
 		"roblox-ts": "catalog:dev",
 		"simple-git-hooks": "catalog:lint",
