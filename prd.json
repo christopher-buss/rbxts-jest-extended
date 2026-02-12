@@ -1,0 +1,502 @@
+{
+	"project": "rbxts-jest-extended",
+	"branchName": "ralph/port-matchers",
+	"description": "Port jest-extended matchers to roblox-ts. Each story adds matcher impl + spec files following patterns in porting-rules.md and existing toBeTrue reference.",
+	"userStories": [
+		{
+			"id": "US-001",
+			"title": "Port pass and fail matchers",
+			"description": "As a developer, I want pass() and fail() matchers so I can explicitly pass or fail tests with custom messages.",
+			"acceptanceCriteria": [
+				"Create src/matchers/pass.ts and src/matchers/fail.ts following toBeTrue pattern",
+				"Create src/matchers/pass.spec.ts and src/matchers/fail.spec.ts",
+				"Add pass and fail to CustomMatchers in types.d.ts: pass(message?: string): R; fail(message?: string): R",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/pass/ and fail/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 1,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-002",
+			"title": "Port toBeFalse and toBeBoolean",
+			"description": "As a developer, I want toBeFalse and toBeBoolean matchers for boolean assertions.",
+			"acceptanceCriteria": [
+				"Create src/matchers/to-be-false.ts and to-be-false.spec.ts",
+				"Create src/matchers/to-be-boolean.ts and to-be-boolean.spec.ts",
+				"Add toBeFalse and toBeBoolean to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeFalse/ and toBeBoolean/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 2,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-003",
+			"title": "Port toBeNumber, toBeString, toBeFunction",
+			"description": "As a developer, I want type-checking matchers for numbers, strings, and functions.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-number, to-be-string, to-be-function",
+				"Add all three to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeNumber/, toBeString/, toBeFunction/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 3,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-004",
+			"title": "Port toBeObject and toBeArray",
+			"description": "As a developer, I want type-checking matchers for objects and arrays.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-object, to-be-array",
+				"toBeArray: use typeIs(actual, 'table') and check for array-like structure",
+				"toBeObject: use typeIs(actual, 'table')",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeObject/, toBeArray/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 4,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-005",
+			"title": "Port toBeEven and toBeOdd",
+			"description": "As a developer, I want matchers to check if numbers are even or odd.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-even, to-be-odd",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeEven/, toBeOdd/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 5,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-006",
+			"title": "Port toBePositive and toBeNegative",
+			"description": "As a developer, I want matchers to check number sign.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-positive, to-be-negative",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBePositive/, toBeNegative/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 6,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-007",
+			"title": "Port toBeInteger and toBeFinite",
+			"description": "As a developer, I want matchers for integer and finite number checks. These need Luau-specific implementations.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-integer, to-be-finite",
+				"toBeInteger: use typeIs(x, 'number') && x === x && x % 1 === 0 (no Number.isInteger)",
+				"toBeFinite: use typeIs(x, 'number') && x === x && x !== math.huge && x !== -math.huge (no Number.isFinite)",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeInteger/, toBeFinite/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 7,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-008",
+			"title": "Port toBeBetween, toBeWithin, toBeInRange",
+			"description": "As a developer, I want range-checking matchers for numbers.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-between, to-be-within, to-be-in-range",
+				"toBeBetween(startDate, endDate) also supports DateTime via UnixTimestampMillis",
+				"Add to CustomMatchers in types.d.ts with correct param types",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeBetween/, toBeWithin/, toBeInRange/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 8,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-009",
+			"title": "Port toBeEmpty and toBeEmptyObject",
+			"description": "As a developer, I want matchers to check for empty values and empty objects.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-empty, to-be-empty-object",
+				"toBeEmpty: handle strings, arrays, tables",
+				"toBeEmptyObject: check table has no keys",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeEmpty/, toBeEmptyObject/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 9,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-010",
+			"title": "Port toBeFrozen and toBeOneOf",
+			"description": "As a developer, I want toBeFrozen (uses table.isfrozen) and toBeOneOf matchers.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-frozen, to-be-one-of",
+				"toBeFrozen: use table.isfrozen(x as object) instead of Object.isFrozen",
+				"toBeOneOf(array): check actual is in the given array",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeFrozen/, toBeOneOf/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 10,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-011",
+			"title": "Port toBeHexadecimal and toBeArrayOfSize",
+			"description": "As a developer, I want toBeHexadecimal and toBeArrayOfSize matchers.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-hexadecimal, to-be-array-of-size",
+				"toBeHexadecimal: use string.match with Luau pattern (no RegExp)",
+				"toBeArrayOfSize(size): check array length",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeHexadecimal/, toBeArrayOfSize/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 11,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-012",
+			"title": "Port toStartWith, toEndWith, toInclude",
+			"description": "As a developer, I want string/array inclusion matchers.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-start-with, to-end-with, to-include",
+				"toInclude: handle both string substring and array member checks",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toStartWith/, toEndWith/, toInclude/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 12,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-013",
+			"title": "Port toIncludeMultiple and toIncludeRepeated",
+			"description": "As a developer, I want matchers for checking multiple substrings and repeated substrings.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-include-multiple, to-include-repeated",
+				"toIncludeMultiple(substrings[]): all substrings present",
+				"toIncludeRepeated(substring, times): substring appears exactly N times",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toIncludeMultiple/, toIncludeRepeated/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 13,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-014",
+			"title": "Port toEqualCaseInsensitive and toEqualIgnoringWhitespace",
+			"description": "As a developer, I want string comparison matchers that ignore case or whitespace.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-equal-case-insensitive, to-equal-ignoring-whitespace",
+				"toEqualIgnoringWhitespace: use string.match with %s Luau pattern (no RegExp)",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toEqualCaseInsensitive/, toEqualIgnoringWhitespace/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 14,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-015",
+			"title": "Port toSatisfy, toSatisfyAll, toSatisfyAny",
+			"description": "As a developer, I want predicate-based matchers.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-satisfy, to-satisfy-all, to-satisfy-any",
+				"toSatisfy(predicate): single value check",
+				"toSatisfyAll(predicate): every array element passes",
+				"toSatisfyAny(predicate): at least one array element passes",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toSatisfy/, toSatisfyAll/, toSatisfyAny/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 15,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-016",
+			"title": "Port toChange, toChangeBy, toChangeTo",
+			"description": "As a developer, I want matchers that check if a function changes a value.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-change, to-change-by, to-change-to",
+				"toChange(mutator): value returned by subject changes after calling mutator",
+				"toChangeBy(mutator, delta): value changes by exactly delta",
+				"toChangeTo(mutator, target): value changes to exactly target",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toChange/, toChangeBy/, toChangeTo/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 16,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-017",
+			"title": "Port toContainKey, toContainKeys, toContainAllKeys, toContainAnyKeys",
+			"description": "As a developer, I want matchers for checking object keys.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-contain-key, to-contain-keys, to-contain-all-keys, to-contain-any-keys",
+				"Use 'key in obj' pattern (no hasOwnProperty)",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toContainKey/, toContainKeys/, toContainAllKeys/, toContainAnyKeys/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 17,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-018",
+			"title": "Port toContainValue, toContainValues, toContainAllValues, toContainAnyValues",
+			"description": "As a developer, I want matchers for checking object values.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-contain-value, to-contain-values, to-contain-all-values, to-contain-any-values",
+				"Use contains() from src/utils for deep equality checks",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toContainValue/, toContainValues/, toContainAllValues/, toContainAnyValues/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 18,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-019",
+			"title": "Port toContainEntry, toContainEntries, toContainAllEntries, toContainAnyEntries",
+			"description": "As a developer, I want matchers for checking object key-value entries.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-contain-entry, to-contain-entries, to-contain-all-entries, to-contain-any-entries",
+				"Use containsEntry() from src/utils",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toContainEntry/, toContainEntries/, toContainAllEntries/, toContainAnyEntries/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 19,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-020",
+			"title": "Port toIncludeAllMembers, toIncludeAnyMembers, toIncludeSameMembers",
+			"description": "As a developer, I want matchers for checking array membership.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-include-all-members, to-include-any-members, to-include-same-members",
+				"Use contains() from src/utils for deep equality",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toIncludeAllMembers/, toIncludeAnyMembers/, toIncludeSameMembers/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 20,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-021",
+			"title": "Port toPartiallyContain, toIncludeAllPartialMembers, toIncludeSamePartialMembers",
+			"description": "As a developer, I want partial matching matchers for arrays.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-partially-contain, to-include-all-partial-members, to-include-same-partial-members",
+				"Partial matching: check subset of object properties",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toPartiallyContain/, toIncludeAllPartialMembers/, toIncludeSamePartialMembers/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 21,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-022",
+			"title": "Port toHaveBeenCalledOnce and toHaveBeenCalledExactlyOnceWith",
+			"description": "As a developer, I want mock call count matchers.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-have-been-called-once, to-have-been-called-exactly-once-with",
+				"Use jest.isMockFunction() from src/utils to validate mock",
+				"jest.fn() returns [mock, fn] — tests must destructure both",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toHaveBeenCalledOnce/, toHaveBeenCalledExactlyOnceWith/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 22,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-023",
+			"title": "Port toHaveBeenCalledBefore and toHaveBeenCalledAfter",
+			"description": "As a developer, I want matchers to assert mock call ordering.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-have-been-called-before, to-have-been-called-after",
+				"Use jest.isMockFunction() from src/utils",
+				"jest.fn() returns [mock, fn] — tests must destructure both",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toHaveBeenCalledBefore/, toHaveBeenCalledAfter/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 23,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-024",
+			"title": "Port toResolve and toReject",
+			"description": "As a developer, I want matchers for promise resolution and rejection.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-resolve, to-reject",
+				"Handle roblox-ts Promise type",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toResolve/, toReject/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 24,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-025",
+			"title": "Port toThrowWithMessage",
+			"description": "As a developer, I want a matcher that checks both error type and message.",
+			"acceptanceCriteria": [
+				"Create impl + spec: to-throw-with-message",
+				"Check thrown error matches type and message pattern",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toThrowWithMessage/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 25,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-026",
+			"title": "Port toBeDate and toBeValidDate",
+			"description": "As a developer, I want DateTime matchers.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-date, to-be-valid-date",
+				"Use DateTime instead of Date",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeDate/, toBeValidDate/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 26,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		},
+		{
+			"id": "US-027",
+			"title": "Port toBeAfter, toBeBefore, toBeAfterOrEqualTo, toBeBeforeOrEqualTo",
+			"description": "As a developer, I want DateTime comparison matchers.",
+			"acceptanceCriteria": [
+				"Create impl + spec for each: to-be-after, to-be-before, to-be-after-or-equal-to, to-be-before-or-equal-to",
+				"Use DateTime.UnixTimestampMillis for comparisons",
+				"Add to CustomMatchers in types.d.ts",
+				"Add exports to src/matchers/index.ts",
+				"Reference: reference/jest-extended/src/matchers/toBeAfter/, toBeBefore/, toBeAfterOrEqualTo/, toBeBeforeOrEqualTo/",
+				"Typecheck passes (pnpm typecheck)",
+				"Lint passes (pnpm lint)",
+				"Tests pass (pnpm test)"
+			],
+			"priority": 27,
+			"passes": false,
+			"notes": "Implement each matcher one at a time. Per matcher: impl + spec + types + exports → typecheck → lint → test → commit. Then start next matcher."
+		}
+	]
+}
